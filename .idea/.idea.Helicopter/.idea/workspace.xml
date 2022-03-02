@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7edbee89-d7c2-427f-a938-09b47a5bdac6" name="Changes" comment="" />
+    <list default="true" id="7edbee89-d7c2-427f-a938-09b47a5bdac6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heli.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1645661920454</updated>
       <workItem from="1645661921189" duration="1861000" />
-      <workItem from="1646185288143" duration="4671000" />
+      <workItem from="1646185288143" duration="5021000" />
     </task>
     <servers />
   </component>

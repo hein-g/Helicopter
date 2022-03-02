@@ -65,7 +65,11 @@ public class Heli : MonoBehaviour
             {
                 Destroy(o);
             }
-            winScreen.gameObject.SetActive(true);
+            foreach (var o in GameObject.FindGameObjectsWithTag("person"))
+            {
+                Destroy(o);
+            }
+            loseScreen.gameObject.SetActive(true);
         }
     }
 }
