@@ -9,6 +9,8 @@ public class Heli : MonoBehaviour
     private int sol;
     private int hosp;
     public Text solText;
+    public Text hospCount;
+    public AudioSource pickupSound;
     void Start()
     {
         sol = 0;
@@ -29,6 +31,7 @@ public class Heli : MonoBehaviour
         if (other.CompareTag("person") && sol < 3)
         {
             Destroy(other.gameObject);
+            pickupSound.Play();
             sol++;
             solText.text = sol.ToString();
             Debug.Log("you are carrying "+sol+" soldiers");
@@ -37,6 +40,7 @@ public class Heli : MonoBehaviour
         if (other.CompareTag("hospital"))
         {
             hosp = hosp + sol;
+            hospCount.text = hosp.ToString();
             sol = 0;
             solText.text = sol.ToString();
             Debug.Log(hosp+" soldiers in hospital");
