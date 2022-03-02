@@ -7,14 +7,20 @@ public class Heli : MonoBehaviour
 {
     // Start is called before the first frame update
     private int sol;
+    private int totalSolCount;
     private int hosp;
     public Text solText;
     public Text hospCount;
     public AudioSource pickupSound;
+    public Canvas winScreen;
+    public Canvas loseScreen;
     void Start()
     {
+        winScreen.gameObject.SetActive(false);
+        loseScreen.gameObject.SetActive(false);
         sol = 0;
         hosp = 0;
+        totalSolCount = GameObject.FindGameObjectsWithTag("person").Length;
     }
 
     // Update is called once per frame
@@ -23,6 +29,15 @@ public class Heli : MonoBehaviour
         //Movement for the heli
         transform.Translate(0,Input.GetAxis("Vertical") * 10.0f * Time.deltaTime,0);
         transform.Translate(Input.GetAxis("Horizontal") * 10.0f * Time.deltaTime,0,0);
+
+        if (hosp == totalSolCount)
+        {
+            foreach (var o in GameObject.FindGameObjectsWithTag("tree"))
+            {
+                Destroy(o);
+            }
+            winScreen.gameObject.SetActive(true);
+        }
     }
 
     //Deals with picking up the soldiers
@@ -34,7 +49,6 @@ public class Heli : MonoBehaviour
             pickupSound.Play();
             sol++;
             solText.text = sol.ToString();
-            Debug.Log("you are carrying "+sol+" soldiers");
         }
         
         if (other.CompareTag("hospital"))
@@ -43,13 +57,15 @@ public class Heli : MonoBehaviour
             hospCount.text = hosp.ToString();
             sol = 0;
             solText.text = sol.ToString();
-            Debug.Log(hosp+" soldiers in hospital");
-            Debug.Log("you are carrying "+sol+" soldiers");
         }
         
         if (other.CompareTag("tree"))
         {
-            Debug.Log("tree hit, game over");
+            foreach (var o in GameObject.FindGameObjectsWithTag("tree"))
+            {
+                Destroy(o);
+            }
+            winScreen.gameObject.SetActive(true);
         }
     }
 }
