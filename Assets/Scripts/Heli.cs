@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Heli : MonoBehaviour
@@ -9,15 +10,19 @@ public class Heli : MonoBehaviour
     private int sol;
     private int totalSolCount;
     private int hosp;
+    private bool destroyed;
     public Text solText;
     public Text hospCount;
     public AudioSource pickupSound;
     public Canvas winScreen;
     public Canvas loseScreen;
+    public SpriteRenderer flame;
     void Start()
     {
+        flame.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(false);
+        destroyed = false;
         sol = 0;
         hosp = 0;
         totalSolCount = GameObject.FindGameObjectsWithTag("person").Length;
@@ -27,8 +32,16 @@ public class Heli : MonoBehaviour
     void Update()
     {
         //Movement for the heli
-        transform.Translate(0,Input.GetAxis("Vertical") * 10.0f * Time.deltaTime,0);
-        transform.Translate(Input.GetAxis("Horizontal") * 10.0f * Time.deltaTime,0,0);
+        if (!destroyed)
+        {
+            transform.Translate(0, Input.GetAxis("Vertical") * 10.0f * Time.deltaTime, 0);
+            transform.Translate(Input.GetAxis("Horizontal") * 10.0f * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
         if (hosp == totalSolCount)
         {
@@ -69,6 +82,9 @@ public class Heli : MonoBehaviour
             {
                 Destroy(o);
             }
+            gameObject.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+            flame.gameObject.SetActive(true);
+            destroyed = true;
             loseScreen.gameObject.SetActive(true);
         }
     }
