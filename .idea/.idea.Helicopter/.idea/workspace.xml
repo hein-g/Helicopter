@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7edbee89-d7c2-427f-a938-09b47a5bdac6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Helicopter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Helicopter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Heli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Heli.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1645661920454</updated>
       <workItem from="1645661921189" duration="1861000" />
-      <workItem from="1646185288143" duration="5817000" />
+      <workItem from="1646185288143" duration="7691000" />
     </task>
     <servers />
   </component>

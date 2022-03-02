@@ -37,18 +37,22 @@ public class Heli : MonoBehaviour
             transform.Translate(0, Input.GetAxis("Vertical") * 10.0f * Time.deltaTime, 0);
             transform.Translate(Input.GetAxis("Horizontal") * 10.0f * Time.deltaTime, 0, 0);
         }
-
+        
+        //restart key
         if (Input.GetKeyDown("r"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
+        
+        //determine if the player has won
         if (hosp == totalSolCount)
         {
             foreach (var o in GameObject.FindGameObjectsWithTag("tree"))
             {
                 Destroy(o);
             }
+
+            Destroy(GameObject.FindGameObjectWithTag("enemy"));
             winScreen.gameObject.SetActive(true);
         }
     }
@@ -71,8 +75,8 @@ public class Heli : MonoBehaviour
             sol = 0;
             solText.text = sol.ToString();
         }
-        
-        if (other.CompareTag("tree"))
+
+        if (other.CompareTag("tree") || other.CompareTag("enemy"))
         {
             foreach (var o in GameObject.FindGameObjectsWithTag("tree"))
             {
